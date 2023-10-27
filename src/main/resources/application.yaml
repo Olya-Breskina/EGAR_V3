@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: accounting_route
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/accounting/**
+        - id: base_route
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/base/**
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: false
+    fetch-registry: false
