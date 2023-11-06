@@ -7,13 +7,13 @@ spring:
     gateway:
       routes:
         - id: accounting_route
-          uri: http://localhost:8081/
+          uri: ${ACCOUNTING_URL}
           predicates:
-            - Path=/accounting/**
+            - Path= ${ACCOUNTING_PATH:/accounting/**}
         - id: base_route
-          uri: http://localhost:8082/
+          uri: ${EMPLOYEE_URL}
           predicates:
-            - Path=/base/**
+            - Path=${EMPLOYEE_PATH:/base/**}
 eureka:
   client:
     enabled: false
